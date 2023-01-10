@@ -4,7 +4,7 @@
 /* VARIABLES CSS */
 :root {
   /* colors */
-  --color-orange: #f94f4f;
+  --color-orange: #fb7413;
   --color-white: #ffffff;
   --color-lightGrey: #959eac;
   --color-mediumGrey: #7d8899;
@@ -95,10 +95,143 @@ body {
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Overpass", sans-serif;
   background: var(--color-veryDarkBlue);
   line-height: 1.5;
 
   /* improves text rendering */
   -webkit-font-smoothing: antialiased;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Component */
+.how {
+  max-width: 25.75rem;
+  height: 26rem;
+  padding: 2rem 2.438rem 2rem 2rem;
+  background: radial-gradient(
+    98.96% 98.96% at 50% 0%,
+    #232a34 0%,
+    #181e27 100%
+  );
+  border-radius: 1.875rem;
+}
+
+.how.show {
+  display: none;
+}
+
+.circle-number {
+  width: 3.188rem;
+  height: 3.188rem;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-darkBlue);
+}
+
+.circle-star {
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1.875rem;
+}
+
+.how__title {
+  font-weight: var(--fw-bold);
+  font-size: var(--font-xl);
+  line-height: 1.25;
+  color: var(--color-white);
+  margin-bottom: 15px;
+}
+
+.desc {
+  font-weight: var(--fw-regular);
+  font-size: var(--font-m);
+  line-height: 1.6;
+  color: var(--color-lightGrey);
+  margin-bottom: 1.5rem;
+}
+
+.how__circles {
+  display: flex;
+  gap: 1.375rem;
+  margin-bottom: 2rem;
+}
+
+.how__number {
+  border: none;
+  background: var(--color-darkBlue);
+  font: var(--fw-bold) var(--font-numbers) / 1.5 "Overpass", sans-serif;
+  letter-spacing: 0.013rem;
+  color: var(--color-mediumGrey);
+  transition: 0.4s ease-in-out;
+  cursor: pointer;
+}
+
+.how__number:hover {
+  background: var(--color-orange);
+  color: var(--color-white);
+}
+
+.btn:link,
+.btn:visited {
+  display: inline-block;
+  background: var(--color-orange);
+  color: var(--color-white);
+  padding-top: 0.688rem;
+  padding-bottom: 0.688rem;
+  width: 100%;
+  border-radius: 23px;
+  text-align: center;
+  font: var(--fw-bold) var(--font-numbers) / 1.26 "Overpass", sans-serif;
+  transition: 0.4s ease-in-out;
+  pointer-events: none;
+}
+
+.btn:hover,
+.btn:active {
+  background: var(--color-white);
+  color: var(--color-orange);
+}
+
+.thanks {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  padding: 45px 40px 45px 32px;
+  display: none;
+}
+
+.thanks.show {
+  display: grid;
+}
+
+.thanks__img {
+  margin-bottom: 2rem;
+}
+
+.thanks__selected-box {
+  padding: 4px 20px;
+  border-radius: 23px;
+  background: var(--color-darkBlue);
+  margin: auto;
+  margin-bottom: 2rem;
+}
+
+.thanks__selected {
+  font-weight: var(--fw-regular);
+  font-size: var(--font-m);
+  line-height: 1.6;
+  color: var(--color-orange);
+}
+
+.thanks__title {
+  margin-bottom: 15px;
 }
