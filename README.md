@@ -1,12 +1,12 @@
-<h1 align="center">Product preview card component
+<h1 align="center">Interactive rating component
 </h1>
 
 &nbsp;
 
-![](./readme/product-preview-card-component.jpg)
+![](./readme/bg.jpg)
 
 <h2 align="center"> 
-	🚧 Product preview card component 🟢 Completed 🚀 🚧
+	🚧 Interactive rating component 🟢 Completed 🚀 🚧
   
 </h2>
 
@@ -20,9 +20,9 @@
 <h2 id="#description">Project description 📚</h2>
 
 This is a solution to the challenge
-[Product preview card component](https://www.frontendmentor.io/challenges/product-preview-card-component-GO7UmttRfa).
+[Interactive rating component](https://www.frontendmentor.io/challenges/interactive-rating-component-koxpeBUmI).
 
-This is a challenge from the Mentor frontend site, where I could put into practice my knowledge with SASS/SCSS, such as smacss architecture, variables, mixins, and Parent Selector.
+This is a challenge on the Mentor frontend site, where I was able to put my knowledge of DOM manipulation into practice.
 
 <a href="https://www.frontendmentor.io/challenges?difficulties=4"><img src="https://img.shields.io/badge/Difficulty-NEWBIE-14c2c8?style=for-the-badge&logo=frontendmentor" alt="Challenge Difficulty - NEWBIE"></a>
 
@@ -34,50 +34,43 @@ smacss architecture, I treated this project as just one component, so I only use
 
 ![](./readme/arq.jpg)
 
-I also used parent Selector, mixins and include to make the project responsive
+<h3>in this project I put my skills with DOM into practice, it was a simple project, so I didn't have many difficulties.</h3>
 
-```css
- &__img {
-    border-radius: rem(8) 0 0 rem(8);
-    object-fit: cover;
-    object-position: right;
+<h3>showing selected value in the thank you section, I used the data attribute to make the state change</h3>
 
-    @include screen-560 {
-      border-radius: rem(8) rem(8) 0 0;
-    }
-  }
-
-  &__content {
-    padding: rem(32);
-    background-color: $white;
-    border-radius: 0 rem(8) rem(8) 0;
-
-    @include screen-560 {
-      border-radius: 0 0 rem(8) rem(8);
-      padding: rem(24);
-    }
-
+```js
+const valueNumberCircle = e.target.textContent;
+document.querySelector("[data-selected]").textContent = valueNumberCircle;
 ```
 
-I also used the rem() function to convert px to rem, you can read more about this function in this article by - [Vanza Setia](https://community.codenewbie.org/vanzasetia/5-handy-sass-code-snippets-42ae)
+<h3>checking which button is active, and as soon as the user selects the evaluation value the button is released</h3>
 
-```scss
-@use "sass:math";
-
-@function rem($value) {
-  @if unitless($value) {
-    $default-pixel: 16;
-
-    @return calc($value / $default-pixel) * 1rem;
+```js
+circlesAll.forEach((cirChecked) => {
+  if (cirChecked.classList.contains(classActive)) {
+    // activating the submit button
+    blockBtn.classList.add(classActive);
+    submitbtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      howContainer.classList.add(classShow);
+      thanksContainer.classList.add(classShow);
+    });
   }
+});
+```
 
-  @error "Sorry, this '#{$value}' must have not any unit";
-}
+<h3>returning to the home screen with the "ESC" key</h3>
+
+```js
+window.addEventListener("keydown", function (e) {
+  // short-circuit
+  e.key === "Escape" && backFunction();
+});
 ```
 
 ## Links
 
-- [Preview Site](https://viniciusshenri96.github.io/product-preview-card-component/)
+- [Preview Site](https://vinicius-interactive-rating.netlify.app)
 <!-- - [Frontend Mentor Solution Page](https://www.frontendmentor.io/solutions/challenge-completed-with-htmlcssleaflet-jsgrid-and-responsive--kw3kKedNp) -->
 
 &nbsp;
@@ -88,26 +81,7 @@ I also used the rem() function to convert px to rem, you can read more about thi
 
 - [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
 - [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
-- [SCSS](https://sass-lang.com)
-
-&nbsp;
-
-## Responsive 📱 - Mobile/Tablet/Desktop
-
-<!-- ### Mobile - 375px -->
-
-<!-- ### Tablet - 768px -->
-
-<span>
-  <img  alt="Suite landing page" title="#suite-landing-page" src="readme/mobile.jpg" width="150px">
-</span>
-<span>
-   <img alt="Suite landing page" title="#suite-landing-page" src="readme/tablet.jpg" width="150px">
-</span>
-<span>
-  <img alt="Suite landing page" title="#suite-landing-page" src="readme/desktop.jpg" width="150px">
-</span>
-<!-- ### Desktop - 1440px -->
+- [Vanilla JS](http://vanilla-js.com)
 
 &nbsp;
 

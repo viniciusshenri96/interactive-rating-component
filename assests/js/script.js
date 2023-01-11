@@ -7,6 +7,7 @@ const thanksContainer = document.querySelector(".thanks");
 const blockBtn = document.querySelector(".blockBtn");
 const circlesAll = document.querySelectorAll(".circle-number");
 const arrowBack = document.querySelector(".thanks__icon-box");
+
 const classActive = "active";
 const classShow = "show";
 
