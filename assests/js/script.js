@@ -1,39 +1,64 @@
 "use strict";
 
-const how = document.querySelector("[data-how-container]");
+const howCircleContainer = document.querySelector("[data-circle-container]");
 const submitbtn = document.querySelector(".btn");
 const howContainer = document.querySelector(".how");
 const thanksContainer = document.querySelector(".thanks");
+const blockBtn = document.querySelector(".blockBtn");
+const circlesAll = document.querySelectorAll(".circle-number");
+const arrowBack = document.querySelector(".thanks__icon-box");
+const classActive = "active";
+const classShow = "show";
 
-how.addEventListener("click", function (e) {
-  const circlesAll = document.querySelectorAll(".circle-number");
+const userEvents = ["touchstart", "click"];
 
-  if (e.target.matches("[data-circles]")) {
-    circlesAll.forEach((cir) => {
-      cir.style.backgroundColor = "#262E38";
-      cir.style.color = "#7C8798";
-    });
-    e.target.style.backgroundColor = "#7C8798";
-    e.target.style.color = "#FFFFFF";
+userEvents.forEach((events) => {
+  howCircleContainer.addEventListener(events, function (e) {
+    if (e.cancelable) e.preventDefault();
 
-    // checking if the user clicked on one of the circles
-    circlesAll.forEach((cir) => {
-      cir.classList.remove("active");
-    });
-    e.target.classList.add("active");
+    if (e.target.matches("[data-circles]")) {
+      circlesAll.forEach((cir) => cir.classList.remove(classActive));
+      e.target.classList.add(classActive);
 
-    circlesAll.forEach((cirCheckd) => {
-      if (cirCheckd.classList.contains("active")) {
-        submitbtn.style.pointerEvents = "visible";
-        submitbtn.addEventListener("click", function (e) {
-          e.preventDefault();
-          howContainer.classList.add("show");
-          thanksContainer.classList.add("show");
-        });
-      }
-    });
+      // checking if the user clicked on one of the circles
+      circlesAll.forEach((cir) => cir.classList.remove(classActive));
+      e.target.classList.add(classActive);
 
-    const valueNumberCircle = e.target.textContent;
-    document.querySelector("[data-selected]").textContent = valueNumberCircle;
+      circlesAll.forEach((cirChecked) => {
+        if (cirChecked.classList.contains(classActive)) {
+          // activating the submit button
+          blockBtn.classList.add(classActive);
+          submitbtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            howContainer.classList.add(classShow);
+            thanksContainer.classList.add(classShow);
+          });
+        }
+      });
+
+      // showing selected value in the thank you section
+      const valueNumberCircle = e.target.textContent;
+      document.querySelector("[data-selected]").textContent = valueNumberCircle;
+    }
+  });
+});
+
+const backFunction = function (e) {
+  console.log(e);
+  if (thanksContainer.classList.contains(classShow)) {
+    circlesAll.forEach((cir) => cir.classList.remove(classActive));
+    howContainer.classList.remove(classShow);
+    thanksContainer.classList.remove(classShow);
+    blockBtn.classList.remove(classActive);
   }
+};
+
+// returning to the home screen with the "ESC" key
+window.addEventListener("keydown", function (e) {
+  // short-circuit
+  e.key === "Escape" && backFunction();
+});
+
+userEvents.forEach((events) => {
+  arrowBack.addEventListener(events, backFunction);
 });
