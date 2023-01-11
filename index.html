@@ -17,7 +17,7 @@
 
 <body>
   <main>
-    <section class="how">
+    <section class="how" data-how-container>
       <div class="circle-star circle-number">
         <img src="./assests/images/icon-star.svg" alt="" aria-hidden="true">
       </div>
@@ -36,16 +36,16 @@
         <button type="submit" class="how__number circle-number" data-circles>4</button>
 
         <button type="submit" class="how__number circle-number" data-circles>5</button>
-        </ul>
+      </div>
       </div>
       <div class="btn-box">
-        <a class="btn" href="/">Submit</a>
-        <div class="blockBtn"></div>
+        <button type="submit" class="btn" data-btn-submit>Submit</button>
+        <div class="blockBtn" data-block-btn></div>
       </div>
     </section>
 
-    <section class="thanks how">
-      <div class="thanks__icon-box circle-number">
+    <section class="thanks how" data-thanks-container>
+      <div class="thanks__icon-box circle-number" data-arrow-back>
         <svg class="thanks__icon" aria-hidden="true" viewBox="0 0 512 512">
           <title>Arrow Back</title>
           <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48"

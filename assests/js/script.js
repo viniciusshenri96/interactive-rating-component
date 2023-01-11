@@ -1,20 +1,20 @@
 "use strict";
 
 const howCircleContainer = document.querySelector("[data-circle-container]");
-const submitbtn = document.querySelector(".btn");
-const howContainer = document.querySelector(".how");
-const thanksContainer = document.querySelector(".thanks");
-const blockBtn = document.querySelector(".blockBtn");
-const circlesAll = document.querySelectorAll(".circle-number");
-const arrowBack = document.querySelector(".thanks__icon-box");
+const howContainer = document.querySelector("[data-how-container]");
+const thanksContainer = document.querySelector("[data-thanks-container]");
+const submitbtn = document.querySelector("[data-btn-submit]");
+const blockBtn = document.querySelector("[data-block-btn]");
+const circlesAll = document.querySelectorAll("[data-circles]");
+const arrowBack = document.querySelector("[data-arrow-back]");
 
 const classActive = "active";
-const classShow = "show";
 
 const userEvents = ["touchstart", "click"];
 
 userEvents.forEach((events) => {
   howCircleContainer.addEventListener(events, function (e) {
+    // avoid bug in touchstart event
     if (e.cancelable) e.preventDefault();
 
     if (e.target.matches("[data-circles]")) {
@@ -31,8 +31,8 @@ userEvents.forEach((events) => {
           blockBtn.classList.add(classActive);
           submitbtn.addEventListener("click", function (e) {
             e.preventDefault();
-            howContainer.classList.add(classShow);
-            thanksContainer.classList.add(classShow);
+            howContainer.classList.add(classActive);
+            thanksContainer.classList.add(classActive);
           });
         }
       });
@@ -44,13 +44,12 @@ userEvents.forEach((events) => {
   });
 });
 
-const backFunction = function (e) {
-  console.log(e);
-  if (thanksContainer.classList.contains(classShow)) {
+const backFunction = function () {
+  if (thanksContainer.classList.contains(classActive)) {
+    [howContainer, thanksContainer, blockBtn].forEach((el) =>
+      el.classList.remove(classActive)
+    );
     circlesAll.forEach((cir) => cir.classList.remove(classActive));
-    howContainer.classList.remove(classShow);
-    thanksContainer.classList.remove(classShow);
-    blockBtn.classList.remove(classActive);
   }
 };
 

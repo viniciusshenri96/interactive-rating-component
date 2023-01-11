@@ -30,20 +30,16 @@ This is a challenge on the Mentor frontend site, where I was able to put my know
 
 ## What I learned
 
-smacss architecture, I treated this project as just one component, so I only used those repositories and partials.
+<h4>In this project I put my skills with DOM into practice, it was a simple project, so I didn't have many difficulties.</h4>
 
-![](./readme/arq.jpg)
-
-<h3>in this project I put my skills with DOM into practice, it was a simple project, so I didn't have many difficulties.</h3>
-
-<h3>showing selected value in the thank you section, I used the data attribute to make the state change</h3>
+<h4>Sshowing selected value in the thank you section, I used the data attribute to make the state change</h4>
 
 ```js
 const valueNumberCircle = e.target.textContent;
 document.querySelector("[data-selected]").textContent = valueNumberCircle;
 ```
 
-<h3>checking which button is active, and as soon as the user selects the evaluation value the button is released</h3>
+<h4>Checking which button is active, and as soon as the user selects the evaluation value the button is released</h4>
 
 ```js
 circlesAll.forEach((cirChecked) => {
@@ -59,13 +55,25 @@ circlesAll.forEach((cirChecked) => {
 });
 ```
 
-<h3>returning to the home screen with the "ESC" key</h3>
+<h4>Returning to the home screen with the "ESC" key</h4>
 
 ```js
 window.addEventListener("keydown", function (e) {
   // short-circuit
   e.key === "Escape" && backFunction();
 });
+```
+
+<h4>Avoid bug in touchstart event</h4>
+
+Usually, both the touchstart and click events are fired in the very same click in the touch and click enabled devices. So, in this case, if the browser fires both touch and mouse events because of single user input, the browser must fire a touchstart before any mouse events.
+
+and i use this check to resolve this Use the preventDefault()
+
+[Read more](https://www.uriports.com/blog/easy-fix-for-intervention-ignored-attempt-to-cancel-a-touchmove-event-with-cancelable-false/)
+
+```js
+if (e.cancelable) e.preventDefault();
 ```
 
 ## Links
